@@ -1,0 +1,91 @@
+{
+  "test_summary": {
+    "total_tests": 8,
+    "passed_tests": 4,
+    "failed_tests": 4,
+    "success_rate": 50.0,
+    "total_time": 0.0658559799194336
+  },
+  "test_results": [
+    {
+      "test_name": "System Initialization",
+      "success": false,
+      "timestamp": "2026-01-11T17:36:19.676017",
+      "details": {
+        "error": "object of type 'NoneType' has no len()"
+      }
+    },
+    {
+      "test_name": "Legacy Compatibility",
+      "success": false,
+      "timestamp": "2026-01-11T17:36:19.695443",
+      "details": {
+        "error": "object of type 'NoneType' has no len()"
+      }
+    },
+    {
+      "test_name": "Agent Registration",
+      "success": false,
+      "timestamp": "2026-01-11T17:36:19.714572",
+      "details": {
+        "error": "object of type 'NoneType' has no len()"
+      }
+    },
+    {
+      "test_name": "Tool Registration",
+      "success": true,
+      "timestamp": "2026-01-11T17:36:19.714585",
+      "details": {
+        "registered_tools": 16,
+        "expected_tools": 9,
+        "missing_tools": []
+      }
+    },
+    {
+      "test_name": "State Management",
+      "success": true,
+      "timestamp": "2026-01-11T17:36:19.714606",
+      "details": {
+        "state_created": true,
+        "state_updated": true,
+        "state_retrieved": true,
+        "debug_info_added": true
+      }
+    },
+    {
+      "test_name": "Error Resilience",
+      "success": true,
+      "timestamp": "2026-01-11T17:36:19.714621",
+      "details": {
+        "circuit_breaker_created": true,
+        "health_monitoring": true,
+        "active_circuits": 1,
+        "open_circuits": 0
+      }
+    },
+    {
+      "test_name": "Observability",
+      "success": true,
+      "timestamp": "2026-01-11T17:36:19.714676",
+      "details": {
+        "logging_working": true,
+        "system_summary": true,
+        "log_retrieval": true,
+        "total_logs": 91
+      }
+    },
+    {
+      "test_name": "End-to-End Pipeline",
+      "success": false,
+      "timestamp": "2026-01-11T17:36:19.717732",
+      "details": {
+        "error": "object NoneType can't be used in 'await' expression"
+      }
+    }
+  ],
+  "system_info": {
+    "timestamp": "2026-01-11T17:36:19.717744",
+    "python_version": "3.x",
+    "test_environment": "development"
+  }
+}

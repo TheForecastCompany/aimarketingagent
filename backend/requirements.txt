@@ -1,0 +1,26 @@
+# FastAPI Backend Requirements
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+redis==5.0.1
+slowapi==0.1.9
+pydantic==2.5.0
+pydantic-settings==2.1.0
+python-dotenv==1.0.0
+httpx==0.25.2
+aiofiles==23.2.1
+
+# Existing dependencies from your project
+# (These should be copied from your current requirements.txt)
+streamlit==1.28.1
+reportlab==4.0.7
+youtube-transcript-api==0.6.2
+assemblyai==0.20.2
+openai==1.3.7
+tiktoken==0.5.2
+beautifulsoup4==4.12.2
+requests==2.31.0
+pandas==2.1.4
+numpy==1.25.2
