@@ -14,7 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # Load environment variables from config/.env
-PROJECT_ROOT = Path(__file__).parent
+PROJECT_ROOT = Path(__file__).parent.parent
 load_dotenv(PROJECT_ROOT / "config" / ".env")
 
 def find_available_port(start_port=8501, max_port=8600):
@@ -30,7 +30,7 @@ def find_available_port(start_port=8501, max_port=8600):
 
 def check_dependencies():
     """Check if required dependencies are available"""
-    PROJECT_ROOT = Path(__file__).parent
+    PROJECT_ROOT = Path(__file__).parent.parent
     frontend_path = PROJECT_ROOT / "frontend"
     
     # Check if frontend directory exists
@@ -48,25 +48,11 @@ def check_dependencies():
         print("📦 node_modules not found. Dependencies need to be installed.")
         return False
     
-    # Check if Node.js is available
-    try:
-        subprocess.run(["node", "--version"], capture_output=True, check=True)
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        print("❌ Node.js not found. Please install Node.js.")
-        return False
-    
-    # Check if npm is available
-    try:
-        subprocess.run(["npm", "--version"], capture_output=True, check=True)
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        print("❌ npm not found. Please install npm.")
-        return False
-    
     return True
 
 def install_frontend_dependencies():
     """Install frontend dependencies"""
-    PROJECT_ROOT = Path(__file__).parent
+    PROJECT_ROOT = Path(__file__).parent.parent
     frontend_path = PROJECT_ROOT / "frontend"
     
     print("📦 Installing Next.js dependencies...")
@@ -86,7 +72,8 @@ def install_frontend_dependencies():
 
 def start_backend():
     """Start the Python backend server"""
-    PROJECT_ROOT = Path(__file__).parent
+    PROJECT_ROOT = Path(__file__).parent.parent
+    BACKEND_ROOT = PROJECT_ROOT / "backend"
     
     # Find available port for backend
     backend_port = find_available_port(8000, 8100)
@@ -96,7 +83,7 @@ def start_backend():
     
     # Set environment variables
     env = os.environ.copy()
-    env["PYTHONPATH"] = str(PROJECT_ROOT)
+    env["PYTHONPATH"] = str(PROJECT_ROOT)  # Set to project root, not backend root
     env["BACKEND_PORT"] = str(backend_port)
     
     # Start backend using uvicorn
@@ -110,10 +97,10 @@ def start_backend():
     ]
     
     print(f"🚀 Starting Python backend on port {backend_port}")
-    print(f"📁 Backend: {PROJECT_ROOT}")
+    print(f"📁 Backend: {BACKEND_ROOT}")
     
     try:
-        process = subprocess.Popen(backend_cmd, cwd=str(PROJECT_ROOT), env=env)
+        process = subprocess.Popen(backend_cmd, cwd=str(BACKEND_ROOT), env=env)
         time.sleep(2)  # Give backend time to start
         if process.poll() is None:
             print(f"✅ Backend started successfully at http://localhost:{backend_port}")
@@ -127,7 +114,7 @@ def start_backend():
 
 def start_frontend():
     """Start the Next.js frontend server"""
-    PROJECT_ROOT = Path(__file__).parent
+    PROJECT_ROOT = Path(__file__).parent.parent
     frontend_path = PROJECT_ROOT / "frontend"
     
     # Start Next.js development server
